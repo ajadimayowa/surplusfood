@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         color: '#114333'
     },
     buttonPressed: {
-        opacity: 0.8
+        opacity: 0.7
     },
     testStyle: {
         width: 330,
@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         margin: 7,
-        backgroundColor: '#F0ECEC'
+        backgroundColor: '#10815C',
+
     }
 })
 

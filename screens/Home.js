@@ -17,7 +17,8 @@ function Home() {
 
     }
 
-    function signUpPagePage() {
+
+    function signUpPage() {
         toggleSignupModal(!signupModal)
     }
     return (
@@ -35,9 +36,9 @@ function Home() {
                     We are fast and reliable
                 </Text>
                 <PrimaryButtons style={styles.loginButton} action={loginPage}>Login</PrimaryButtons>
-                <PrimaryButtons style={styles.signUpButton} action={signUpPagePage}><Text style={styles.text}>Sign up</Text></PrimaryButtons>
-                <LoginPage state={loginModal} />
-                <SignupPage state={signupModal} />
+                <PrimaryButtons style={styles.signUpButton} action={signUpPage}><Text style={styles.text}>Sign up</Text></PrimaryButtons>
+                <LoginPage state={loginModal} closePage={loginPage} />
+                <SignupPage state={signupModal} closePage={signUpPage} />
 
 
 
