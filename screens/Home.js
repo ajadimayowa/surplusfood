@@ -38,7 +38,7 @@ function Home() {
                 <PrimaryButtons style={styles.loginButton} action={loginPage}>Login</PrimaryButtons>
                 <PrimaryButtons style={styles.signUpButton} action={signUpPage}><Text style={styles.text}>Sign up</Text></PrimaryButtons>
                 <LoginPage state={loginModal} closePage={loginPage} />
-                <SignupPage state={signupModal} closePage={signUpPage} />
+                <SignupPage sModal={signupModal} closePage={signUpPage} />
 
 
 

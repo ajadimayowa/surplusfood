@@ -67,7 +67,7 @@ function LoginPage(props) {
     }
 
     return (
-        <Modal visible={props.state} animationType='slide'>
+        <Modal visible={props.sModal} animationType='slide'>
             <View style={styles.container}>
                 <NavIcon action={closePage} />
                 <Image source={require('../assets/images/signup-image.png')} style={styles.image} />
