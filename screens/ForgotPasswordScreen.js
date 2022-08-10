@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet } from 'react-native'
+import { StyleSheet, SafeAreaView } from 'react-native'
 import { View, Modal, Image, Text } from 'react-native';
 import PrimaryButtons from '../components/PrimaryButtons';
 import PrimaryInputField from '../components/PrimaryInputField';
@@ -34,21 +34,23 @@ function ForgotPasswordScreen(props) {
 
     return (
         <Modal visible={props.onModal} animationType='slide'>
-            <View style={styles.container}>
-                <NavIcon action={backToPreviousPage} />
-                <Image source={require('../assets/images/forgotpassword-image.png')} style={styles.image} />
-                <Text style={styles.text}>Forgot
-                    Password?</Text>
+            <SafeAreaView style={styles.container}>
+                <View style={styles.container}>
+                    <NavIcon action={backToPreviousPage} />
+                    <Image source={require('../assets/images/forgotpassword-image.png')} style={styles.image} />
+                    <Text style={styles.text}>Forgot
+                        Password?</Text>
 
-                <Text style={styles.p2}>No need to panic! Kindly enter the email
-                    address associated with your account.</Text>
+                    <Text style={styles.p2}>No need to panic! Kindly enter the email
+                        address associated with your account.</Text>
 
-                <PrimaryInputField placeholderColor={eplaceholderColor} catchUserInput={catchEmail}
-                    clearInput={email}>{eplaceholder}</PrimaryInputField>
-                <PrimaryButtons action={checkdetails}><Text style={styles.buttonText}>Submit</Text></PrimaryButtons>
+                    <PrimaryInputField placeholderColor={eplaceholderColor} catchUserInput={catchEmail}
+                        clearInput={email}>{eplaceholder}</PrimaryInputField>
+                    <PrimaryButtons action={checkdetails}><Text style={styles.buttonText}>Submit</Text></PrimaryButtons>
 
 
-            </View>
+                </View>
+            </SafeAreaView>
         </Modal >
     )
 
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: '100%',
-        paddingVertical: 80,
+        paddingVertical: 50,
         paddingHorizontal: 50,
         alignItems: 'center',
 

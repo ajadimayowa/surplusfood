@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet } from 'react-native'
+import { StyleSheet, SafeAreaView } from 'react-native'
 import { View, Modal, Image, Text } from 'react-native';
 import PrimaryButtons from '../components/PrimaryButtons';
 import PrimaryInputField from '../components/PrimaryInputField';
@@ -73,34 +73,36 @@ function LoginPage(props) {
 
     return (
         <Modal visible={props.state} animationType='slide'>
-            <View style={styles.container}>
-                <NavIcon action={backToPreviousPage} />
-                <Image source={require('../assets/images/login-image.png')} style={styles.image} />
-                <Text style={styles.text}>Login</Text>
-                <ForgotPasswordScreen onModal={forgotPasswordModal} closePage={offRessetModal} />
-                <PrimaryInputField placeholderColor={uplaceholderColor} catchUserInput={catchUserUsername}
-                    clearInput={username}>{uplaceholder}</PrimaryInputField>
-                <View><Text>{''}</Text></View>
-                <PrimaryInputField placeholderColor={pplaceholderColor} catchUserInput={catchPassword} clearInput={password} >{pplaceholder}</PrimaryInputField>
-                <View style={{
-                    flexDirection: 'row', justifyContent: 'flex-end',
-                    width: '100%', paddingHorizontal: 20
-                }}><Text style={styles.p}>Forgot password? {' '}</Text>
-                    <PressableTexts action={onForgotpasswordModal}><Text style={styles.pLink}>Reset</Text></PressableTexts>
+            <SafeAreaView style={styles.container}>
+                <View style={styles.container}>
+                    <NavIcon action={backToPreviousPage} />
+                    <Image source={require('../assets/images/login-image.png')} style={styles.image} />
+                    <Text style={styles.text}>Login</Text>
+                    <ForgotPasswordScreen onModal={forgotPasswordModal} closePage={offRessetModal} />
+                    <PrimaryInputField placeholderColor={uplaceholderColor} catchUserInput={catchUserUsername}
+                        clearInput={username}>{uplaceholder}</PrimaryInputField>
+                    <View><Text>{''}</Text></View>
+                    <PrimaryInputField placeholderColor={pplaceholderColor} catchUserInput={catchPassword} clearInput={password} >{pplaceholder}</PrimaryInputField>
+                    <View style={{
+                        flexDirection: 'row', justifyContent: 'flex-end',
+                        width: '100%', paddingHorizontal: 20
+                    }}><Text style={styles.p}>Forgot password? {' '}</Text>
+                        <PressableTexts action={onForgotpasswordModal}><Text style={styles.pLink}>Reset</Text></PressableTexts>
+                    </View>
+
+
+                    <PrimaryButtons action={checkdetails}><Text style={styles.buttonText}>Login</Text></PrimaryButtons>
+                    <View style={{
+                        flexDirection: 'row', justifyContent: 'center',
+                        width: '100%', paddingVertical: 30
+                    }}><Text style={styles.p}>A new member?{' '}</Text>
+                        <PressableTexts action={onSignupModal}><Text style={styles.pLink}>Register</Text></PressableTexts>
+                    </View>
+
+                    <SignupPage sModal={signUpModal} closePage={closePage} />
+
                 </View>
-
-
-                <PrimaryButtons action={checkdetails}><Text style={styles.buttonText}>Login</Text></PrimaryButtons>
-                <View style={{
-                    flexDirection: 'row', justifyContent: 'center',
-                    width: '100%', paddingVertical: 30
-                }}><Text style={styles.p}>A new member?{' '}</Text>
-                    <PressableTexts action={onSignupModal}><Text style={styles.pLink}>Register</Text></PressableTexts>
-                </View>
-
-                <SignupPage sModal={signUpModal} closePage={closePage} />
-
-            </View>
+            </SafeAreaView>
         </Modal >
     )
 
@@ -110,7 +112,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: '100%',
-        paddingVertical: 80,
+        paddingVertical: 50,
         paddingHorizontal: 50,
         alignItems: 'center',
 

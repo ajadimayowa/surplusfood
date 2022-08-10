@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
+import { SafeAreaView } from 'react-native';
 import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native';
 import PrimaryButtons from '../components/PrimaryButtons';
 import LoginPage from './LoginPage';
@@ -8,7 +9,7 @@ import SignupPage from './SignupPage';
 
 
 
-function Home() {
+function Home({ toggle }) {
     const [loginModal, toggleLoginModal] = useState(false)
     const [signupModal, toggleSignupModal] = useState(false)
 
@@ -25,28 +26,30 @@ function Home() {
         <LinearGradient style={styles.homeContainer} colors={['#10815C', '#113C2E']}>
             <ImageBackground style={styles.homeContainer} imageStyle={styles.bgStyle}
                 source={require('../assets/images/bgimage.png')}>
-                <Image source={require('../assets/images/home-image.png')} style={styles.homeImageStyle} />
-                <Text style={styles.homeHeader}>
-                    Grocery Delivery
-                </Text>
-                <Text style={styles.homeHeader2}>
-                    To Your Doorstep
-                </Text>
-                <Text style={styles.homeHeader3}>
-                    We are fast and reliable
-                </Text>
-                <PrimaryButtons style={styles.loginButton} action={loginPage}>Login</PrimaryButtons>
-                <PrimaryButtons style={styles.signUpButton} action={signUpPage}><Text style={styles.text}>Sign up</Text></PrimaryButtons>
-                <LoginPage state={loginModal} closePage={loginPage} />
-                <SignupPage sModal={signupModal} closePage={signUpPage} />
+                <SafeAreaView style={styles.homeContainer}>
+                    <Image source={require('../assets/images/home-image.png')} style={styles.homeImageStyle} />
+                    <Text style={styles.homeHeader}>
+                        Grocery Delivery
+                    </Text>
+                    <Text style={styles.homeHeader2}>
+                        To Your Doorstep
+                    </Text>
+                    <Text style={styles.homeHeader3}>
+                        We are fast and reliable
+                    </Text>
+                    <PrimaryButtons style={styles.loginButton} action={loginPage}>Login</PrimaryButtons>
+                    <PrimaryButtons style={styles.signUpButton} action={signUpPage}><Text style={styles.text}>Sign up</Text></PrimaryButtons>
+                    <LoginPage state={loginModal} closePage={loginPage} />
+                    <SignupPage sModal={signupModal} closePage={signUpPage} />
 
 
 
 
 
-
+                </SafeAreaView>
 
             </ImageBackground>
+
         </LinearGradient>
     );
 }

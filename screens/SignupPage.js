@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet } from 'react-native'
-import { View, Modal, Image, Text } from 'react-native';
+import { View, Modal, Image, Text, SafeAreaView } from 'react-native';
 import PrimaryButtons from '../components/PrimaryButtons';
 import PrimaryInputField from '../components/PrimaryInputField';
 import NavIcon from '../components/NavIcon';
@@ -68,28 +68,30 @@ function LoginPage(props) {
 
     return (
         <Modal visible={props.sModal} animationType='slide'>
-            <View style={styles.container}>
-                <NavIcon action={closePage} />
-                <Image source={require('../assets/images/signup-image.png')} style={styles.image} />
-                <Text style={styles.text}>Sign up</Text>
+            <SafeAreaView style={styles.container}>
+                <View style={styles.container}>
+                    <NavIcon action={closePage} />
+                    <Image source={require('../assets/images/signup-image.png')} style={styles.image} />
+                    <Text style={styles.text}>Sign up</Text>
 
-                <PrimaryInputField placeholderColor={uplaceholderColor} catchUserInput={catchEmail}
-                    clearInput={email}>{eplaceholder}</PrimaryInputField>
+                    <PrimaryInputField placeholderColor={uplaceholderColor} catchUserInput={catchEmail}
+                        clearInput={email}>{eplaceholder}</PrimaryInputField>
 
-                <PrimaryInputField
-                    catchUserInput={catchFullname} clearInput={fName} >{fplaceholder}</PrimaryInputField>
+                    <PrimaryInputField
+                        catchUserInput={catchFullname} clearInput={fName} >{fplaceholder}</PrimaryInputField>
 
-                <PrimaryInputField placeholderColor={uplaceholderColor} catchUserInput={catchUsername}
-                    clearInput={username}>{uplaceholder}</PrimaryInputField>
+                    <PrimaryInputField placeholderColor={uplaceholderColor} catchUserInput={catchUsername}
+                        clearInput={username}>{uplaceholder}</PrimaryInputField>
 
-                <PrimaryInputField
-                    catchUserInput={catchPassword} clearInput={password} >{pplaceholder}</PrimaryInputField>
+                    <PrimaryInputField
+                        catchUserInput={catchPassword} clearInput={password} >{pplaceholder}</PrimaryInputField>
 
-                <Text style={styles.p}>By signing up, you are agreeing to our
-                    Terms & Conditions and Privacy Policy.</Text>
-                <PrimaryButtons action={checkdetails}><Text style={styles.buttonText}>Sign up</Text></PrimaryButtons>
+                    <Text style={styles.p}>By signing up, you are agreeing to our
+                        Terms & Conditions and Privacy Policy.</Text>
+                    <PrimaryButtons action={checkdetails}><Text style={styles.buttonText}>Sign up</Text></PrimaryButtons>
 
-            </View>
+                </View>
+            </SafeAreaView>
         </Modal >
     )
 
@@ -99,7 +101,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: '100%',
-        paddingVertical: 100,
+        paddingVertical: 50,
         paddingHorizontal: 50,
         alignItems: 'center',
 
