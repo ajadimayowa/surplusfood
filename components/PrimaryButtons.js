@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Pressable, View, StyleSheet, Text } from "react-native";
 
-function PrimaryButtons(props) {
+function PrimaryButtons({ action, style, children }) {
     return (
 
 
-        <Pressable onPress={props.action} style={({ pressed }) => pressed ? [styles.buttonPressed, styles.testStyle, props.style] : [styles.button, props.style]}>
+        <Pressable onPress={action} style={({ pressed }) => pressed ? [styles.buttonPressed, styles.testStyle, style] : [styles.button, style]}>
             <View>
-                <Text style={styles.text}>{props.children}</Text>
+                <Text style={styles.text}>{children}</Text>
             </View>
         </Pressable>
 
@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 18,
         fontWeight: '700',
-        color: '#114333'
+        color: '#114333',
+        fontFamily: 'montserat-bold'
     },
     buttonPressed: {
         opacity: 0.7

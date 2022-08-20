@@ -1,27 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Ionicons } from "@expo/vector-icons"
 import { SafeAreaView } from 'react-native';
 import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native';
 import PrimaryButtons from '../components/PrimaryButtons';
-import LoginPage from './LoginPage';
-import SignupPage from './SignupPage';
 
 
 
-function Home({ toggle }) {
-    const [loginModal, toggleLoginModal] = useState(false)
-    const [signupModal, toggleSignupModal] = useState(false)
+function Home({ switchScreen }) {
 
-    function loginPage() {
-        toggleLoginModal(!loginModal)
-
-    }
-
-
-    function signUpPage() {
-        toggleSignupModal(!signupModal)
-    }
     return (
         <LinearGradient style={styles.homeContainer} colors={['#10815C', '#113C2E']}>
             <ImageBackground style={styles.homeContainer} imageStyle={styles.bgStyle}
@@ -37,15 +25,10 @@ function Home({ toggle }) {
                     <Text style={styles.homeHeader3}>
                         We are fast and reliable
                     </Text>
-                    <PrimaryButtons style={styles.loginButton} action={loginPage}>Login</PrimaryButtons>
-                    <PrimaryButtons style={styles.signUpButton} action={signUpPage}><Text style={styles.text}>Sign up</Text></PrimaryButtons>
-                    <LoginPage state={loginModal} closePage={loginPage} />
-                    <SignupPage sModal={signupModal} closePage={signUpPage} />
-
-
-
-
-
+                    <PrimaryButtons action={switchScreen.bind(this, 'login')} style={styles.loginButton}>
+                        <Ionicons name="md-log-in" size={20} />Login</PrimaryButtons>
+                    <PrimaryButtons action={switchScreen.bind(this, 'signup')} style={styles.signUpButton}>
+                        <Text style={styles.text}> <Ionicons name="settings" />Sign up</Text></PrimaryButtons>
                 </SafeAreaView>
 
             </ImageBackground>
@@ -75,11 +58,13 @@ const styles = StyleSheet.create({
     },
     homeHeader: {
         fontSize: 40,
+        fontFamily: 'montserat-bold',
         fontWeight: '800',
         color: '#FFFFFF',
         marginTop: -25,
     },
     homeHeader2: {
+        fontFamily: 'montserat-bold',
         fontSize: 35,
         fontWeight: '700',
         color: '#FFFFFF',
@@ -87,6 +72,7 @@ const styles = StyleSheet.create({
     },
     homeHeader3: {
         fontSize: 15,
+        fontFamily: 'montserat-regular',
         fontWeight: '700',
         color: '#FFFFFF',
         marginBottom: 60,
@@ -103,6 +89,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#FF5B00'
     },
     text: {
-        color: 'white'
+        color: 'white',
+        fontFamily: 'montserat-bold'
+
     }
 });

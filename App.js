@@ -1,28 +1,49 @@
 import { StatusBar } from 'expo-status-bar';
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
 import { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Home from './screens/Home';
 import LoginPage from './screens/LoginPage';
-import Signuooage from './screens/SignupPage'
-
-
+import SignupPage from './screens/SignupPage'
 
 export default function App() {
-  let screen = <Home toggle={toggleScreens} />
-  const [manageScreens, setScreen] = useState()
+  const [displayScreen, setDisplayScreen] = useState()
 
-  if (manageScreens) {
-    screen = <LoginPage />
+  const [fontLoading] = useFonts({
+    'montserat-bold': require('./assets/fonts/Montserrat-Bold.otf'),
+    'montserat-regular': require('./assets/fonts/Montserrat-Regular.otf'),
+    'avenir-next': require('./assets/fonts/AvenirLTStd-Black.otf'),
+  })
+
+  if (!fontLoading) {
+    return <AppLoading />
   }
 
-  function toggleScreens() {
-    setScreen('login')
+
+  let screen = <Home switchScreen={switchScreen} />
+
+  if (!displayScreen) {
+    screen = <Home switchScreen={switchScreen} />
   }
+  if (displayScreen == 'login') {
+    screen = <LoginPage back={switchScreen} />
+  }
+
+  if (displayScreen == 'signup') {
+    screen = <SignupPage back={switchScreen} />
+  }
+
+  function switchScreen(goto) {
+    setDisplayScreen(goto)
+  }
+
+
 
   return (
     <View style={styles.container}>
-      {screen}
       <StatusBar style="auto" />
+      {screen}
     </View>
   );
 }

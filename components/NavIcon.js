@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Pressable, View, StyleSheet, Text, Image } from "react-native";
 
-function NavIcon(props) {
+function NavIcon({ action }) {
     return (
 
 
-        <Pressable onPress={props.action} style={({ pressed }) => pressed ? [styles.buttonBack] : [styles.button]}>
+        <Pressable onPress={action} style={({ pressed }) => pressed ? [styles.buttonBack] : [styles.button]}>
             <Image source={require('../assets/icons/navicon-back.png')} />
         </Pressable>
 
